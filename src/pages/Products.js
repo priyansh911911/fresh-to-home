@@ -42,7 +42,7 @@ function Products() {
       
       <Grid container spacing={3}>
         {products.filter(product => product.enabled !== false).map((product) => (
-          <Grid item xs={12} sm={6} md={4} key={product.id}>
+          <Grid item xs={6} sm={6} md={4} key={product.id}>
             <Card sx={{
               transition: 'transform 0.3s ease',
               '&:hover': {
@@ -50,7 +50,7 @@ function Products() {
                 background: 'rgba(255, 255, 255, 0.2)'
               }
             }}>
-              <CardMedia component="img" height="200" image={product.image} alt={product.name} />
+              <CardMedia component="img" sx={{ height: { xs: 120, sm: 200 } }} image={product.image} alt={product.name} />
               <CardContent>
                 <Typography variant="h6" sx={{ color: '#333', fontWeight: 'bold' }}>
                   {product.name}

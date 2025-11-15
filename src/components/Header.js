@@ -49,7 +49,20 @@ function Header() {
   return (
     <AppBar position="static" sx={{ mb: 2 }}>
       <Toolbar>
-        <Box sx={{ display: 'flex', alignItems: 'center', mr: 3 }}>
+        <IconButton 
+          onClick={handleLocationClick}
+          sx={{ 
+            background: 'rgba(255, 255, 255, 0.3)',
+            backdropFilter: 'blur(3px)',
+            border: '1px solid rgba(255, 255, 255, 0.5)',
+            borderRadius: '12px',
+            mr: 1,
+            display: { xs: 'inline-flex', sm: 'none' }
+          }}
+        >
+          <LocationOn sx={{ color: '#333' }} />
+        </IconButton>
+        <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center', mr: 3 }}>
           <Button
             onClick={handleLocationClick}
             sx={{
@@ -78,9 +91,12 @@ function Header() {
           </Button>
         </Box>
         
-        <Typography variant="h6" sx={{ flexGrow: 1, cursor: 'pointer', fontWeight: 'bold', color: '#333' }} onClick={() => navigate('/')}>
-          Fresh To Home
-        </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1, cursor: 'pointer' }} onClick={() => navigate('/')}>
+          <img src="/logo.png" alt="Fresh To Home" style={{ height: '32px', marginRight: '8px' }} />
+          <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#333', display: { xs: 'none', sm: 'block' } }}>
+            Fresh To Home
+          </Typography>
+        </Box>
         <Button 
           sx={{ 
             color: '#333', 
@@ -112,7 +128,7 @@ function Header() {
           sx={{ 
             background: 'rgba(255, 255, 255, 0.3)',
             backdropFilter: 'blur(3px)',
-            border: '1px solid rgba(255, 255, 255, 0.5)',
+            border: '1px solid rgba(255, 255, 0.5)',
             borderRadius: '12px'
           }} 
           onClick={() => navigate('/admin')}

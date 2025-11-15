@@ -28,7 +28,8 @@ function Home() {
           mb: 2, 
           color: '#333', 
           fontWeight: 'bold',
-          textShadow: '0 4px 8px rgba(255,255,255,0.5)'
+          textShadow: '0 4px 8px rgba(255,255,255,0.5)',
+          fontSize: { xs: '1.75rem', sm: '2.5rem', md: '3rem' }
         }}
       >
         Fresh Food Delivered to Your Door
@@ -39,7 +40,7 @@ function Home() {
       {categories.length > 0 ? (
         <Grid container spacing={3}>
           {categories.map((category) => (
-            <Grid item xs={12} sm={6} md={3} key={category.name}>
+            <Grid item xs={6} sm={6} md={3} key={category.name}>
               <Card 
                 sx={{ 
                   cursor: 'pointer',
@@ -51,7 +52,7 @@ function Home() {
                 }} 
                 onClick={() => navigate('/products')}
               >
-                <CardMedia component="img" height="200" image={category.image} alt={category.name} />
+                <CardMedia component="img" sx={{ height: { xs: 120, sm: 200 } }} image={category.image} alt={category.name} />
                 <CardContent>
                   <Typography variant="h6" sx={{ color: '#333', fontWeight: 'bold' }}>
                     {category.name}
