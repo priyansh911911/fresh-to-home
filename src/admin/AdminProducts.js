@@ -51,47 +51,72 @@ function AdminProducts() {
   return (
     <Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
-        <Typography variant="h4">Manage Products</Typography>
-        <Button variant="contained" startIcon={<Add />} onClick={handleAdd}>
+        <Typography variant="h5" sx={{ fontSize: { xs: '1.25rem', sm: '1.5rem' } }}>Manage Products</Typography>
+        <Button 
+          variant="contained" 
+          startIcon={<Add />} 
+          onClick={handleAdd} 
+          size="small"
+          sx={{ 
+            fontSize: '0.75rem',
+            padding: '4px 8px',
+            minHeight: '32px'
+          }}
+        >
           Add Product
         </Button>
       </Box>
 
       <TableContainer component={Paper}>
-        <Table>
+        <Table size="small">
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
-              <TableCell>Price</TableCell>
-              <TableCell>Category</TableCell>
-              <TableCell>Quantity</TableCell>
-            <TableCell>In Stock</TableCell>
-            <TableCell>Enabled</TableCell>
+              <TableCell sx={{ display: { xs: 'none', sm: 'table-cell' } }}>Price</TableCell>
+              <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>Category</TableCell>
+              <TableCell sx={{ display: { xs: 'none', sm: 'table-cell' } }}>Qty</TableCell>
+              <TableCell>Status</TableCell>
               <TableCell>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {products.map((product) => (
               <TableRow key={product.id}>
-                <TableCell>{product.name}</TableCell>
-                <TableCell>${product.price}</TableCell>
-                <TableCell>{product.category}</TableCell>
-                <TableCell>{product.quantity || 0}</TableCell>
-                <TableCell>{product.inStock ? 'Yes' : 'No'}</TableCell>
                 <TableCell>
-                  <Switch
-                    checked={product.enabled !== false}
-                    onChange={(e) => updateProduct(product.id, { ...product, enabled: e.target.checked })}
-                    size="small"
-                  />
+                  <Box>
+                    <Typography variant="body2" fontWeight="bold">{product.name}</Typography>
+                    <Typography variant="caption" sx={{ display: { sm: 'none' } }}>
+                      ${product.price} • {product.category} • Qty: {product.quantity || 0}
+                    </Typography>
+                  </Box>
+                </TableCell>
+                <TableCell sx={{ display: { xs: 'none', sm: 'table-cell' } }}>${product.price}</TableCell>
+                <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>{product.category}</TableCell>
+                <TableCell sx={{ display: { xs: 'none', sm: 'table-cell' } }}>{product.quantity || 0}</TableCell>
+                <TableCell>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <Typography variant="caption" sx={{ display: { sm: 'none' } }}>
+                      {product.inStock ? 'In' : 'Out'}
+                    </Typography>
+                    <Typography variant="body2" sx={{ display: { xs: 'none', sm: 'block' } }}>
+                      {product.inStock ? 'In Stock' : 'Out of Stock'}
+                    </Typography>
+                    <Switch
+                      checked={product.enabled !== false}
+                      onChange={(e) => updateProduct(product.id, { ...product, enabled: e.target.checked })}
+                      size="small"
+                    />
+                  </Box>
                 </TableCell>
                 <TableCell>
-                  <IconButton onClick={() => handleEdit(product)}>
-                    <Edit />
-                  </IconButton>
-                  <IconButton onClick={() => handleDelete(product.id)} color="error">
-                    <Delete />
-                  </IconButton>
+                  <Box sx={{ display: 'flex' }}>
+                    <IconButton onClick={() => handleEdit(product)} size="small">
+                      <Edit fontSize="small" />
+                    </IconButton>
+                    <IconButton onClick={() => handleDelete(product.id)} color="error" size="small">
+                      <Delete fontSize="small" />
+                    </IconButton>
+                  </Box>
                 </TableCell>
               </TableRow>
             ))}

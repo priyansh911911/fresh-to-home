@@ -39,25 +39,31 @@ function AdminOrders() {
 
   return (
     <Box>
-      <Typography variant="h4" gutterBottom>Order Management</Typography>
+      <Typography variant="h5" gutterBottom sx={{ fontSize: { xs: '1.25rem', sm: '1.5rem' } }}>Order Management</Typography>
 
       <TableContainer component={Paper}>
-        <Table>
+        <Table size="small">
           <TableHead>
             <TableRow>
-              <TableCell>Order ID</TableCell>
-              <TableCell>Customer</TableCell>
+              <TableCell>Order</TableCell>
+              <TableCell sx={{ display: { xs: 'none', sm: 'table-cell' } }}>Customer</TableCell>
               <TableCell>Total</TableCell>
               <TableCell>Status</TableCell>
-              <TableCell>Date</TableCell>
               <TableCell>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {orders.map((order) => (
               <TableRow key={order.id}>
-                <TableCell>#{order.id}</TableCell>
-                <TableCell>{order.customer}</TableCell>
+                <TableCell>
+                  <Box>
+                    <Typography variant="body2" fontWeight="bold">#{order.id}</Typography>
+                    <Typography variant="caption" sx={{ display: { sm: 'none' } }}>
+                      {order.customer} • {order.date}
+                    </Typography>
+                  </Box>
+                </TableCell>
+                <TableCell sx={{ display: { xs: 'none', sm: 'table-cell' } }}>{order.customer}</TableCell>
                 <TableCell>${order.total}</TableCell>
                 <TableCell>
                   <Chip 
@@ -66,10 +72,9 @@ function AdminOrders() {
                     size="small"
                   />
                 </TableCell>
-                <TableCell>{order.date}</TableCell>
                 <TableCell>
-                  <IconButton onClick={(e) => handleMenuClick(e, order)}>
-                    <MoreVert />
+                  <IconButton onClick={(e) => handleMenuClick(e, order)} size="small">
+                    <MoreVert fontSize="small" />
                   </IconButton>
                 </TableCell>
               </TableRow>

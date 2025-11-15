@@ -22,8 +22,18 @@ function AdminCategories() {
   return (
     <Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
-        <Typography variant="h4">Manage Categories</Typography>
-        <Button variant="contained" startIcon={<Add />} onClick={() => setOpen(true)}>
+        <Typography variant="h5" sx={{ fontSize: { xs: '1.25rem', sm: '1.5rem' } }}>Manage Categories</Typography>
+        <Button 
+          variant="contained" 
+          startIcon={<Add />} 
+          onClick={() => setOpen(true)}
+          size="small"
+          sx={{ 
+            fontSize: '0.75rem',
+            padding: '4px 8px',
+            minHeight: '32px'
+          }}
+        >
           Add Category
         </Button>
       </Box>
