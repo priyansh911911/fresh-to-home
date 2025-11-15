@@ -8,11 +8,14 @@ A React-based fresh food delivery application with customer UI and admin panel.
 - **Home Page**: Category showcase and hero section
 - **Products Page**: Product catalog with add to cart functionality
 - **Shopping Cart**: Cart management with quantity controls
+- **Location Selection**: Pincode-based delivery area selection
 
 ### Admin Panel
 - **Dashboard**: Overview with stats and quick actions
-- **Product Management**: CRUD operations for products
+- **Product Management**: CRUD operations for products with variations
 - **Order Management**: View and update order statuses
+- **Category Management**: Add/remove product categories
+- **Location Management**: Manage delivery areas with pincodes
 
 ## Installation
 
@@ -21,22 +24,16 @@ npm install
 npm start
 ```
 
-## Project Structure
-
-```
-src/
-├── components/     # Shared components
-├── pages/         # Customer-facing pages
-├── admin/         # Admin panel components
-└── utils/         # Utility functions
-```
-
 ## Technologies Used
 
 - React 18
 - Material-UI
 - React Router
-- Axios (for API calls)
+- Local Storage for data persistence
+
+## Live Demo
+
+[Deploy on Vercel](https://vercel.com)
 
 ## Usage
 
