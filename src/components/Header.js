@@ -97,19 +97,7 @@ function Header() {
             Fresh To Home
           </Typography>
         </Box>
-        <Button 
-          sx={{ 
-            color: '#333', 
-            background: 'rgba(255, 255, 255, 0.3)',
-            backdropFilter: 'blur(3px)',
-            border: '1px solid rgba(255, 255, 255, 0.5)',
-            borderRadius: '12px',
-            mx: 1
-          }} 
-          onClick={() => navigate('/products')}
-        >
-          Products
-        </Button>
+
         <IconButton 
           sx={{ 
             background: 'rgba(255, 255, 255, 0.3)',
